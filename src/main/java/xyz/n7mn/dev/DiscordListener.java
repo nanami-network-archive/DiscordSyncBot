@@ -38,7 +38,7 @@ class DiscordListener extends ListenerAdapter {
             return;
         }
 
-        if (!event.getMessage().getContentRaw().toLowerCase().startsWith("7.")){
+        if (!event.getMessage().getContentRaw().toLowerCase().startsWith("#.7")){
             return;
         }
 

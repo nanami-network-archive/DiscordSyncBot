@@ -3,6 +3,7 @@ package xyz.n7mn.dev;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -30,7 +31,21 @@ class DiscordListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        // 作成中
+        if (event.isWebhookMessage()){
+            return;
+        }
+        if (event.getAuthor().isBot()){
+            return;
+        }
+
+        if (!event.getMessage().getContentRaw().toLowerCase().startsWith("7.")){
+            return;
+        }
+
+        String s = event.getMessage().getContentRaw().toLowerCase();
+        Message message = event.getMessage();
+
+        message.reply("準備中").queue();
     }
 
     @Override

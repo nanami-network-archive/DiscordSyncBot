@@ -30,25 +30,6 @@ class DiscordListener extends ListenerAdapter {
     }
 
     @Override
-    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        if (event.isWebhookMessage()){
-            return;
-        }
-        if (event.getAuthor().isBot()){
-            return;
-        }
-
-        if (!event.getMessage().getContentRaw().toLowerCase().startsWith("#.7")){
-            return;
-        }
-
-        String s = event.getMessage().getContentRaw().toLowerCase();
-        Message message = event.getMessage();
-
-        message.reply("準備中").queue();
-    }
-
-    @Override
     public void onReady(@NotNull ReadyEvent event) {
 
         TimerTask task = new TimerTask() {
